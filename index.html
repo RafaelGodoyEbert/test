@@ -3,11 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abrir Lista M3U</title>
+    <title>Lista M3U</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Abrir Lista M3U</h1>
-    <p>Clique no link abaixo para abrir sua lista M3U em um aplicativo externo:</p>
-    <a href="https://raw.githubusercontent.com/RafaelGodoyEbert/test/abc/br.m3u" download>Baixar Lista M3U</a>
+    <h1>Conteúdo da Lista M3U</h1>
+    <p>Copie o conteúdo abaixo e cole em seu aplicativo de streaming:</p>
+    <pre id="m3uContent">
+#EXTM3U
+#EXTINF:-1,tvg-id="Ae.br" tvg-name="A&E FHD 1" tvg-logo="https://skyrisk.github.io/brazucaplay/logos/ae.png" group-title="OUTROS",A&E FHD 1
+http://playon.click:80/live/930668174/B154E1646w/666.m3u8
+#EXTINF:-1,tvg-id="Ae.br" tvg-name="A&E FHD 2" tvg-logo="https://skyrisk.github.io/brazucaplay/logos/ae.png" group-title="OUTROS",A&E FHD 2
+http://playon.click:80/live/394030308/z719f6646Q/666.m3u8
+    </pre>
+    <button onclick="copyToClipboard()">Copiar para a área de transferência</button>
+
+    <script>
+        function copyToClipboard() {
+            var text = document.getElementById('m3uContent').innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Conteúdo copiado para a área de transferência!');
+            }, function(err) {
+                alert('Falha ao copiar o conteúdo: ' + err);
+            });
+        }
+    </script>
 </body>
 </html>
